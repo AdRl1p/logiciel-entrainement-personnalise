@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css" type="text/css">
+    </head>
+</html>
+<body>
+    <title>Coach Sportif</title>
+    <nav>
+        <ul>
+            <li><a href="script.html">Créer</a></li>
+            <li><a href="MesEntrainements.html">Mes entrainements</a></li>
+            <li><a href="Documentation.html">Documentation</a></li>
+        </ul>
+    </nav>
+    
+    <div id="result"></div>
+    
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        /*window.mocation.search récupère tout ce qu'il y après le "?" dans l'URL*/
+        /*URLSearchParams trnasforme l'URL pour que les valeurs puissent être extraitent*/
+        /*params.get("level") cherche dans l'URL un paramètre nommé level et récupère sa valeur*/
+        const level = params.get("level");
+        const time = params.get("time");
+        const zone = params.get("zone");
+        const Endurance = params.get("Endurance");
+        const nomberOfTime = params.get("nomberOfTime");
+
+        /*Affiche le résultat dans l'élément result*/
+        /* ${...} insère la variable*/
+        document.getElementById("result").innerHTML = `
+            <p><b>Niveau :</b> ${level}</p>
+            <p><b>Durée max :</b> ${time}</p>
+            <p><b>Zone :</b> ${zone}</p>
+            <p><b>Endurance :</b> ${Endurance}</p>
+            <p><b>Séances/semaine :</b> ${nomberOfTime}</p>
+        `;
+    </script>
+
+</body>

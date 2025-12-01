@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css" type="text/css">
+    </head>
+</html>
+<body>
+    <title>Coach Sportif</title>
+    
+    <nav><!--Créer une liste dont le contenue sont des liens vers une d'autre page-->
+        <ul>
+            <li><a href="script.html">Créer</a></li><!--Page 1-->
+            <li><a href="MesEntrainements.html">Mes entrainements</a></li><!--Page 2-->
+            <li><a href="Documentation.html">Documentation</a></li><!--Page 3-->
+        </ul>
+    </nav>
+    
+    <div class="formulaire"><!--Créer bloc contenant h1, option et button-->
+        <h1>Choix</h1>
+        
+        <div class="option"><!--Créer bloc contenant p et input-->
+            <p>
+                Quel est votre niveau ?<br>
+                (Ce paramêtre impactera la difficulté de l'entrainements)<br>
+            </p>
+            <!--Radio permet de choisir qu'une option parmis les imput du même name-->
+            <input  type="radio" name="level" value="Inexistant"/>Inexistant
+            <input  type="radio" name="level" value="Débutant"/>Débutant
+            <input  type="radio" name="level" value="Intermédiaire"/>Intermédiaire
+            <input  type="radio" name="level" value="Avancé"/>Avancé
+        </div>
+        
+        <div class="option">
+            <p>
+                Combien de temps par séance maximum ?
+            </p>
+            <input type="radio" name="time" value="10min"/>10min
+            <input type="radio" name="time" value="30min"/>30min
+            <input type="radio" name="time" value="1h"/>1h
+            <input type="radio" name="time" value="Pas d'importance"/>Pas d'importance
+        </div>
+        
+        <div class="option">
+            <p>
+                Que voulez-vous travaller ?
+            </p>
+            <input type="radio" name="zone" value="Haut du corp"/>Haut du corp
+            <input type="radio" name="zone" value="Bas du corp"/>Bas du corp
+            <input type="radio" name="zone" value="Tout le corp"/>Tout le corp
+            
+            <input type="checkbox" name="Endurance" value="Endurance"/>Endurance
+        </div>
+        
+        <div class="option">
+            <p>
+                Combien de séance par semaine pouvez-vous faire ?
+            </p>
+            <input type="radio" name="nomberOfTime" value="1"/>1
+            <input type="radio" name="nomberOfTime" value="2"/>2
+            <input type="radio" name="nomberOfTime" value="3"/>3
+            <input type="radio" name="nomberOfTime" value="4"/>4
+            <input type="radio" name="nomberOfTime" value="5"/>5
+            <input type="radio" name="nomberOfTime" value="6"/>6
+            <input type="radio" name="nomberOfTime" value="7"/>7
+        </div>
+        
+        <button onclick="envoyer()">Valider</button><!--Créer un bouton qui exécute la fonction envoyer lorsq'il est cliqué-->
+    
+    </div>
+    
+    <script>
+        function envoyer(){/* Début de la fonction envoyer*/
+            /*Récupère les valeurs des boutons radio*/
+            /* input[name="level"]:checked cherche un input avec le nom level, time,...*/
+            /*.value récupere la valeur associé au nom*/
+            /*? évite les erreurs*/
+            let level = document.querySelector('input[name="level"]:checked')?.value;
+            let time = document.querySelector('input[name="time"]:checked')?.value;
+            let zone = document.querySelector('input[name="zone"]:checked')?.value;
+            let Endurance = document.querySelector('input[name="Endurance"]:checked')? "Oui" : "Non";
+            let nomberOfTime = document.querySelector('input[name="nomberOfTime"]:checked')?.value;
+        
+            let url = "MesEntrainements.html"/* Initialisation de l'url où les données seront envoyées*/
+                /*? debut d'un paramètre puis nom du paramètre*/
+                /*& debut d'un nouveau paramètre*/
+                /*encodeURLComponent(name) permet d'encoder les noms pour qu'il n'y est plus d'éspace*/
+                + "?level=" + encodeURIComponent(level) 
+                + "&time=" + encodeURIComponent(time)
+                + "&zone=" + encodeURIComponent(zone)
+                + "&Endurance=" + encodeURIComponent(Endurance)
+                + "&nomberOfTime=" + encodeURIComponent(nomberOfTime);
+
+            window.location.href = url; /*Redirige l'user vers la page Mes entrainements*/
+        }
+        
+    </script>
+
+    
+</body>
