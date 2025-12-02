@@ -48,7 +48,7 @@
             <input type="radio" name="zone" value="Bas du corp"/>Bas du corp
             <input type="radio" name="zone" value="Tout le corp"/>Tout le corp
             
-            <input type="checkbox" name="Endurance" value="Endurance"/>Endurance
+            <input type="radio" name="zone" value="Endurance"/>Endurance
         </div>
         
         <div class="option">
@@ -77,7 +77,6 @@
             let level = document.querySelector('input[name="level"]:checked')?.value;
             let time = document.querySelector('input[name="time"]:checked')?.value;
             let zone = document.querySelector('input[name="zone"]:checked')?.value;
-            let Endurance = document.querySelector('input[name="Endurance"]:checked')? "Oui" : "Non";
             let nomberOfTime = document.querySelector('input[name="nomberOfTime"]:checked')?.value;
         
             let url = "MesEntrainements.html"/* Initialisation de l'url où les données seront envoyées*/
@@ -87,7 +86,6 @@
                 + "?level=" + encodeURIComponent(level) 
                 + "&time=" + encodeURIComponent(time)
                 + "&zone=" + encodeURIComponent(zone)
-                + "&Endurance=" + encodeURIComponent(Endurance)
                 + "&nomberOfTime=" + encodeURIComponent(nomberOfTime);
 
             window.location.href = url; /*Redirige l'user vers la page Mes entrainements*/
@@ -96,4 +94,5 @@
     </script>
 
     
+
 </body>
